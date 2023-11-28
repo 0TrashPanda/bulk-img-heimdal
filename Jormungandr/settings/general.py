@@ -44,7 +44,7 @@ CSRF_TRUSTED_ORIGINS = []
 # In your .env file, write sqlite:///<path to Jormungandr>/Jormungandr/db.sqlite3
 DATABASES = {
     # 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
-    'default': dj_database_url.parse("sqlite:////C:/Users/jonah/Documents/code/Jormungandr/db.sqlite3", conn_max_age=600),
+    'default': dj_database_url.parse("sqlite:////home/jonah/Documents/code/projects/bulk-img-heimdal/db.sqlite3", conn_max_age=600),
 }
 
 # Email stuff

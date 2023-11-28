@@ -272,6 +272,7 @@ class Picture(models.Model):
     link = models.CharField(max_length=150, unique=True)
     is_carousel_pic = models.BooleanField(default=False)
     album = models.ForeignKey(PhotoAlbum, on_delete=models.CASCADE)
+    thumbnail = models.CharField(max_length=151, blank=True, null=True)
 
     def __str__(self):
         return self.album.__str__() + " - " + self.name

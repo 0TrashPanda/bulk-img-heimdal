@@ -6,7 +6,7 @@ from django.utils import timezone
 from Backend.models import *
 from Jormungandr.settings.general import MAILGUN_KEY
 
-from Jormungandr.util.tools import graph_nodes_to_json
+from Jormungandr.util.tools import graph_nodes_to_json, save_images
 
 import json
 
@@ -128,12 +128,12 @@ def send_mail_contact(request):
 
 def img_upload(request):
     if request.method == 'POST':
-        # form = ImageUploadForm(request.POST, request.FILES)
-        # if form.is_valid():
-        #     form.save()
+        album = request.POST['album']
+        image_links = request.POST['image_links'].splitlines()
+        # print(f"album: {album} \nimage_links: {image_links}")
+        if album and image_links:
+            save_images(album, image_links)
         return redirect(reverse('img_upload'))
     else:
-        # form = ImageUploadForm()
-    # return render(request, 'Jormungandr/img-upload.html', {'form': form})
         _albums = PhotoAlbum.objects.filter(visible=True).order_by('-created_at')
         return render(request, 'Jormungandr/img_upload.html', {'albums': _albums})
