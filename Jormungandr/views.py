@@ -134,7 +134,6 @@ def img_upload(request):
     if request.method == 'POST':
         album = request.POST['album']
         image_links = request.POST['image_links'].splitlines()
-        # print(f"album: {album} \nimage_links: {image_links}")
         if album and image_links:
             save_images(album, image_links)
         return redirect(reverse('img_upload'))

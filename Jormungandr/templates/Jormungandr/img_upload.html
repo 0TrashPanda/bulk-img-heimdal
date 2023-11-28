@@ -20,8 +20,8 @@
             {% csrf_token %}
             <div class="m-2">
               <textarea class="my-2 w-full p-1 border-2 border-stone-400 rounded-[.2rem] resize-none" name="image_links" id="imageLinksTextarea" rows="10" placeholder="Image links" ondrop="newLine(event)"></textarea>
-              <label for="cars">album :</label>
-              <select class="my-2 p-1 w-full border-2 border-stone-400 rounded-[.2rem]" id="searchInput" name="album" />
+              <label for="searchInput">album :</label>
+              <select class="mb-2 p-1 w-full border-2 border-stone-400 rounded-[.2rem]" id="searchInput" name="album" />
                 {% for album in albums %}
                     <option value="{{ album.name }}">{{ album.name }}</option>
                 {% endfor %}
