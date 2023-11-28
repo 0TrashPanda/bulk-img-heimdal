@@ -2,6 +2,7 @@ from django.urls import reverse
 import requests
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from Backend.models import *
 from Jormungandr.settings.general import MAILGUN_KEY
@@ -126,7 +127,10 @@ def send_mail_contact(request):
 
     return handler404(request)
 
+@login_required
 def img_upload(request):
+    if not request.user.is_superuser:
+        return handler403(request)
     if request.method == 'POST':
         album = request.POST['album']
         image_links = request.POST['image_links'].splitlines()

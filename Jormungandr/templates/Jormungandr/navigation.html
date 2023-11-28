@@ -47,6 +47,9 @@
                     {% endif %}
                 {% endfor %}
 
+                <li><a href="{% url 'img_upload' %}">img_upload</a></li>
+                <li><a href="{% url 'albums' %}">albums</a></li>
+
                 {% if user.is_authenticated and user.profile.role < 5 %}
                     <li class="drop-down"><a href="#">Leden</a>
                         <ul>
