@@ -1,3 +1,4 @@
+from django.urls import reverse
 import requests
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
@@ -124,3 +125,15 @@ def send_mail_contact(request):
         return redirect(redir + "?contact=ok")
 
     return handler404(request)
+
+def img_upload(request):
+    if request.method == 'POST':
+        # form = ImageUploadForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     form.save()
+        return redirect(reverse('img_upload'))
+    else:
+        # form = ImageUploadForm()
+    # return render(request, 'Jormungandr/img-upload.html', {'form': form})
+        _albums = PhotoAlbum.objects.filter(visible=True).order_by('-created_at')
+        return render(request, 'Jormungandr/img_upload.html', {'albums': _albums})
